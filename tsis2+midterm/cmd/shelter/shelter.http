@@ -1,0 +1,37 @@
+### Create Animal 
+POST localhost:8081/api/v1/animals
+Content-Type: application/json
+
+{
+    ID: "1",
+    Kind_Of_Animal: "Cat", 
+    Kind_Of_Breed: "Siamese", 
+    Name: "Mittens", 
+    Age: "3", 
+    Description: "Playful and affectionate, enjoys chasing toys."
+}
+
+> {%
+    client.test("Request executed successfully", function() {
+        client.assert(response.status === 200, "Response status is not 200");
+    });
+%}
+
+### Get Animal
+GET localhost:8081/api/v1/animals/1
+
+> {%
+    client.test("Request executed successfully", function() {
+        client.assert(response.status === 200, "Response status is not 200");
+    });
+%}
+
+### Delete Animal
+DELETE localhost:8081/api/v1/animals/1
+Content-Type: application/json
+
+> {%
+    client.test("Request executed successfully", function() {
+        client.assert(response.status === 200, "Response status is not 200");
+    });
+%}
